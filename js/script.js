@@ -6,31 +6,6 @@
 // Modes available: "console" (quiet logging) or "screen" (renders error box in UI)
 const ERROR_MODE = "screen"; 
 
-
-document.getElementById("fetchData").addEventListener("click", getRandomQuote);
-
-function getRandomQuote() {
-  clearDisplayErrors();
-
-  fetch("server.php")
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP Error Status: ${res.status}`);
-      }
-      return res.text();
-    })
-    .then((data) => {
-      // Dump raw unstyled text straight into the container
-      document.getElementById("result").innerHTML = data;
-    })
-    .catch((err) => {
-      handleRoutingError(err);
-    });
-}
-/*
-
-
-
 document.getElementById("fetchData").addEventListener("click", () => {
   
   // Clear out any stale errors from a previous click attempt
